@@ -1,118 +1,314 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Claro! Como seu projeto é uma **API de gerenciamento de convidados em NestJS**, dá para deixar o README mais completo, explicando a arquitetura, endpoints, exemplos de requisições e o funcionamento de cada parte.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+ Você pode colocar algo assim:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+````
+# API de Convidados 🎉
 
-## Description
+Este projeto consiste em uma API REST desenvolvida utilizando **NestJS** e **TypeScript**, criada para realizar o gerenciamento de convidados de um evento.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A aplicação possui operações para consultar, cadastrar, atualizar e remover convidados, utilizando uma estrutura organizada em **Controller, Service e DTO**.
 
-## Project setup
+---
 
-```bash
-$ npm install
+## 📌 Sobre o projeto
+
+A API foi desenvolvida como um projeto de estudo para praticar conceitos fundamentais do **NestJS**, como:
+
+- Criação de Controllers e rotas HTTP;
+- Injeção de dependências;
+- Criação e utilização de Services;
+- Utilização de DTOs para entrada de dados;
+- Parâmetros de rota com `@Param`;
+- Corpo da requisição com `@Body`;
+- Métodos HTTP como `GET`, `POST`, `PATCH` e `DELETE`;
+- Tratamento de erros utilizando `NotFoundException`;
+- Organização e separação de responsabilidades;
+- Manipulação de dados utilizando métodos de arrays do JavaScript/TypeScript.
+
+Atualmente, os convidados são armazenados em memória através de um array dentro do Service. Portanto, os dados são perdidos quando a aplicação é reiniciada.
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+- **Node.js**
+- **NestJS**
+- **TypeScript**
+- **REST API**
+- **HTTP**
+- **JavaScript/TypeScript Array Methods**
+
+---
+
+## 📂 Estrutura do projeto
+
+A aplicação possui uma estrutura semelhante a:
+
+```text
+src/
+├── convidados/
+│   ├── convidados.controller.ts
+│   ├── convidados.service.ts
+│   └── criar-convidado.dto.ts
+│
+└── app.module.ts
+````
+
+ ### Controller
+
+ O `ConvidadosController` é responsável por receber as requisições HTTP e direcioná-las para o Service.
+
+ Ele possui endpoints para:
+
+ - Listar convidados;
+- Cadastrar convidados;
+- Atualizar a idade;
+- Remover convidados.
+
+ ### Service
+
+ O `ConvidadosService` concentra a lógica relacionada aos convidados.
+
+ Entre suas responsabilidades estão:
+
+ - Armazenar a lista de convidados;
+- Procurar um convidado pelo ID;
+- Atualizar a idade;
+- Remover um convidado;
+- Retornar erros quando o convidado não é encontrado.
+
+ ### DTO
+
+ O `CriarConvidadoDto` é utilizado para definir os dados necessários para cadastrar um novo convidado.
+
+---
+
+ ## 🚀 Funcionalidades
+
+ ### 📋 Listar convidados
+
+ Retorna todos os convidados cadastrados.
+
+ **Método:**
+
+```
+GET /convidado
 ```
 
-## Compile and run the project
+ Exemplo de resposta:
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+[
+  {
+    "id": 1,
+    "nome": "Rebeca",
+    "idade": 20
+  },
+  {
+    "id": 2,
+    "nome": "Leonardo",
+    "idade": 18
+  },
+  {
+    "id": 3,
+    "nome": "Sergio",
+    "idade": 18
+  }
+]
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+ ### ➕ Cadastrar convidado
 
-# e2e tests
-$ npm run test:e2e
+ Permite adicionar um novo convidado através de uma requisição `POST`.
 
-# test coverage
-$ npm run test:cov
+ **Método:**
+
+```
+POST /convidado
 ```
 
-## Deployment
+ Exemplo de requisição:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```
+{
+  "nome": "João",
+  "idade": 25
+}
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+ A aplicação recebe os dados através do `@Body()` e realiza o processamento do novo convidado.
 
-## Observability
+---
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+ ### ✏️ Atualizar idade
 
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+ Permite alterar a idade de um convidado utilizando seu ID.
 
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+ **Método:**
 
-This project is already instrumented. Create a free account at [observe.nestjs.com](https://observe.nestjs.com), add an application, and paste the generated app key and secret into the `ObserveModule.forRoot()` call in `src/app.module.ts`.
+```
+PATCH /convidado/:id
+```
 
-The free plan needs no payment details and covers 300,000 events a month. You can also browse the [live demo](https://www.observe-demo.nestjs.com/dashboard) first - the whole dashboard over a busy service's data, with nothing to install.
+ Exemplo:
 
-## Resources
+```
+PATCH /convidado/1
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+ Body:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observe](https://observe.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```
+{
+  "idade": 21
+}
+```
 
-## Support
+ O Service procura o convidado através do ID e atualiza sua idade.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+ ### 🗑️ Remover convidado
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+ Remove um convidado utilizando seu ID.
 
-## License
+ **Método:**
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```
+DELETE /convidado/:id
+```
+
+ Exemplo:
+
+```
+DELETE /convidado/3
+```
+
+ Quando a operação é realizada com sucesso, a API retorna o status HTTP:
+
+```
+204 No Content
+```
+
+---
+
+ ## ⚠️ Tratamento de erros
+
+ A aplicação utiliza o `NotFoundException` do NestJS para informar quando um convidado não existe.
+
+ Por exemplo, ao tentar buscar ou atualizar um convidado com um ID inexistente:
+
+```
+[ADMINISTRADOR] Convidado com ID 10 não encontrado!
+```
+
+ Esse tratamento evita que a aplicação tente manipular um registro que não existe.
+
+---
+
+ ## 🧠 Conceitos praticados
+
+ Este projeto foi desenvolvido com o objetivo de colocar em prática conceitos importantes do desenvolvimento de APIs com NestJS.
+
+ ### Injeção de dependência
+
+ O `ConvidadosService` é injetado no Controller através do construtor:
+
+```
+constructor(
+  private readonly convidadoService: ConvidadosService
+) {}
+```
+
+ Dessa forma, o Controller pode utilizar os métodos do Service sem precisar criar manualmente uma nova instância.
+
+ ### Separação de responsabilidades
+
+ O projeto separa as responsabilidades entre as diferentes camadas:
+
+ **Controller → recebe as requisições**
+
+ **Service → executa as regras e operações**
+
+ **DTO → define os dados recebidos**
+
+ Essa organização facilita a manutenção e evolução da aplicação.
+
+---
+
+ ## 🔎 Exemplos de rotas
+
+ | Método | Rota | Descrição |
+| --- | --- | --- |
+| `GET` | `/convidado` | Lista todos os convidados |
+| `POST` | `/convidado` | Cadastra um novo convidado |
+| `PATCH` | `/convidado/:id` | Atualiza a idade |
+| `DELETE` | `/convidado/:id` | Remove um convidado |
+
+---
+
+ ## ▶️ Como executar o projeto
+
+ Primeiro, instale as dependências:
+
+```
+npm install
+```
+
+ Depois, execute a aplicação em modo de desenvolvimento:
+
+```
+npm run start:dev
+```
+
+ A API ficará disponível localmente na porta configurada pelo projeto.
+
+ Por padrão:
+
+```
+http://localhost:3000
+```
+
+---
+
+ ## 🧪 Testando a API
+
+ As requisições podem ser testadas utilizando ferramentas como:
+
+ - Insomnia
+- Postman
+- Thunder Client
+- Extensão REST Client do VS Code
+
+ Também é possível testar diretamente através de ferramentas de linha de comando, como o `curl`.
+
+---
+
+ ## 📚 Objetivo do projeto
+
+ Este projeto tem como principal objetivo servir como prática no desenvolvimento de APIs utilizando **NestJS**, permitindo compreender desde a criação das rotas até a organização da lógica de negócio em Services.
+
+ A implementação pode ser posteriormente expandida com recursos como:
+
+ - Banco de dados;
+- TypeORM ou Prisma;
+- Validação de dados;
+- Autenticação;
+- Documentação com Swagger;
+- Testes unitários e de integração;
+- Paginação;
+- Filtros e busca de convidados.
+
+---
+
+ ## 👨‍💻 Desenvolvimento
+
+ Projeto desenvolvido para fins de estudo e prática com **NestJS, TypeScript e desenvolvimento de APIs REST**.
+
+```
+
+Esse formato deixa o README com cara de **projeto de portfólio**, porque não apenas mostra o código, mas também explica **o que a API faz, como ela está estruturada e como utilizá-la**.
+```
