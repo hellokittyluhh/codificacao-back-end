@@ -1,8 +1,3 @@
-Claro! Como seu projeto é uma **API de gerenciamento de convidados em NestJS**, dá para deixar o README mais completo, explicando a arquitetura, endpoints, exemplos de requisições e o funcionamento de cada parte.
-
- Você pode colocar algo assim:
-
-````
 # API de Convidados 🎉
 
 Este projeto consiste em uma API REST desenvolvida utilizando **NestJS** e **TypeScript**, criada para realizar o gerenciamento de convidados de um evento.
@@ -28,7 +23,6 @@ A API foi desenvolvida como um projeto de estudo para praticar conceitos fundame
 
 Atualmente, os convidados são armazenados em memória através de um array dentro do Service. Portanto, os dados são perdidos quando a aplicação é reiniciada.
 
----
 
 ## 🛠️ Tecnologias utilizadas
 
@@ -39,32 +33,6 @@ Atualmente, os convidados são armazenados em memória através de um array dent
 - **HTTP**
 - **JavaScript/TypeScript Array Methods**
 
----
-
-## 📂 Estrutura do projeto
-
-A aplicação possui uma estrutura semelhante a:
-
-```text
-src/
-├── convidados/
-│   ├── convidados.controller.ts
-│   ├── convidados.service.ts
-│   └── criar-convidado.dto.ts
-│
-└── app.module.ts
-````
-
- ### Controller
-
- O `ConvidadosController` é responsável por receber as requisições HTTP e direcioná-las para o Service.
-
- Ele possui endpoints para:
-
- - Listar convidados;
-- Cadastrar convidados;
-- Atualizar a idade;
-- Remover convidados.
 
  ### Service
 
