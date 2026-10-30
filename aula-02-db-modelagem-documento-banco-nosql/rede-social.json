@@ -1,0 +1,16 @@
+{
+    "texto":"post da turne do Jão",
+    "autor":"JÃO",
+    "curtidas":[
+       { "nome":"marina_ruy_barbosa"},
+       { "nome":"lidia_sofc"},
+       {"nome":"isabel_teixeira"}
+    ],
+    "comentario":[
+        {"autor":"marina_ruy_barbosa","texto":"voces dois"},
+         {"autor":"lidia_sofc","texto":"parece um sonho"},
+         {"autor":"Isabel_teixeira","texto":"Vamos!!! viva!!!"}
+
+    ]
+
+}
