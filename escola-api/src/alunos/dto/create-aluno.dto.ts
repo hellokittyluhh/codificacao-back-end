@@ -1,11 +1,19 @@
 import { IsString,IsNotEmpty,IsInt,Min,IsArray,arrayMinSize, ArrayMinSize } from "class-validator";
-
+import { ApiProperty } from "@nestjs/swagger";
 export class CreatAlunoDto{
+    @ApiProperty({
+        example:'Matheus Souza',
+        description:'nome do aluno',
+    })
     @IsString()
     @IsNotEmpty({
         message:'O nome é obrigatório e não pode estar vazio!'
     })
     nome: string;
+    @ApiProperty({
+        example:25,
+        description:'idade do aluno'
+    })
 
     @IsInt({
         message:'A idade deve ser um número inteiro'
@@ -14,11 +22,19 @@ export class CreatAlunoDto{
         message:'A idade não pode ser negativa.'
     })
     idade: number;
+    @ApiProperty({
+        example:9999,
+        description:'Matricula do aluno',
+    })
      @IsString()
       @IsNotEmpty({
         message:'A Matricula é Obrigatória'
     })
     matricula: string;
+  @ApiProperty({
+    example:['Ciencia da computaçao','Letras Portgues'],
+    description:'Cursos em que o aluno está matriculado'
+  })
      @IsString({each:true,message:'Cada curso deve ser um  texto'})
      @IsArray()
      @ArrayMinSize(1,{
